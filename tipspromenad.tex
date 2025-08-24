@@ -26,18 +26,22 @@
     \noindent
   \fi
   % Frågeruta i en minipage
-  \begin{minipage}[t]{0.48\textwidth}
+  \begin{minipage}[t]{0.49\textwidth}
     \begin{center}
       \textbf{\LARGE TIPSPROMENAD}\\[1em]
-      \textbf{\Large FRÅGA \thefraga}
+      \textbf{\Large FRÅGA \#\thefraga}
     \end{center}
     \vspace{1em}
     % Bild (om angiven)
-    \ifstrempty{#1}{}{
-      \begin{center}
-        \includegraphics[height=4cm,keepaspectratio]{#1}
+    \begin{center}
+      \parbox[c][8cm][c]{0.9\linewidth}{%
+        \ifstrempty{#1}{%
+      % Ingen bild -> tom yta
+          }{%
+            \centering\includegraphics[height=8cm,keepaspectratio]{#1}%
+          }%
+        }
       \end{center}
-    }
     % Frågetext
     \begin{center}
       \parbox{13cm}{\centering #2}
@@ -64,17 +68,70 @@
 }
 
 \begin{document}
-
 \tipspromenadfraga{stockholm.jpg}{Vilken stad är Sveriges huvudstad?}
 {Stockholm}{Göteborg}{Malmö}
-
+%
 \tipspromenadfraga{}{Hur många grader är en rät vinkel?}
 {45}{90}{180}
-
+%
 \tipspromenadfraga{moon.jpg}{Vilket år landade människan på månen?}
 {1965}{1969}{1972}
-
+%
 \tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
 {Guld}{Syre}{Silver}
-
+%
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
