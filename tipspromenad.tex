@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt,landscape]{article}
 
-\usepackage[margin=1.5cm]{geometry}
+\usepackage[top=1.5cm,bottom=1.5cm,left=0cm,right=0cm]{geometry}
 \usepackage{array}
 \usepackage{titlesec}
 \usepackage{etoolbox}
@@ -45,28 +45,32 @@
 \newcommand{\svarsblanketter}{%
   \clearpage
   \noindent
-    \begin{minipage}[t]{0.32\textwidth}
+  \hspace*{2cm}% left padding
+    \begin{minipage}[t]{0.3\textwidth}
     \svarsblankett
   \end{minipage}\hfill
-  \begin{minipage}[t]{0.32\textwidth}
-    \svarsblankett
-  \end{minipage}
-  \begin{minipage}[t]{0.32\textwidth}
-    \svarsblankett
-  \end{minipage}
-
-  \vspace{1cm}
-
-  \noindent
-  \begin{minipage}[t]{0.32\textwidth}
+  \begin{minipage}[t]{0.3\textwidth}
     \svarsblankett
   \end{minipage}\hfill
-  \begin{minipage}[t]{0.32\textwidth}
+  \begin{minipage}[t]{0.3\textwidth}
     \svarsblankett
   \end{minipage}
-  \begin{minipage}[t]{0.32\textwidth}
-    \svarsblankett
-  \end{minipage}
+  \hspace*{1cm}% right padding
+
+  % \vspace{1cm}
+  %
+  % \noindent
+  % \hspace*{2cm}% left padding
+  % \begin{minipage}[t]{0.3\textwidth}
+  %   \svarsblankett
+  % \end{minipage}\hfill
+  % \begin{minipage}[t]{0.3\textwidth}
+  %   \svarsblankett
+  % \end{minipage}\hfill
+  % \begin{minipage}[t]{0.3\textwidth}
+  %   \svarsblankett
+  % \end{minipage}
+  % \hspace*{1cm}% right padding
 }
 
 % Kommando för en fråga
@@ -103,7 +107,7 @@
     % Svarsalternativ
     \renewcommand{\arraystretch}{1.8}
     \begin{center}
-      \begin{tabular}{|>{\centering\arraybackslash}m{1cm}|m{11cm}|}
+      \begin{tabular}{|>{\centering\arraybackslash}m{1cm}|m{8cm}|}
         \hline
         1 & #3 \\ \hline
         X & #4 \\ \hline
@@ -117,6 +121,7 @@
     \par\newpage
   \else
     \hfill
+    \vrule width 0.2pt % <-- vertical line
   \fi
 }
 
@@ -129,6 +134,15 @@
 %
 \tipspromenadfraga{moon.jpg}{Vilket år landade människan på månen?}
 {1965}{1969}{1972}
+%
+\tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
+{Guld}{Syre}{Silver}
+%
+\tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
+{Guld}{Syre}{Silver}
+%
+\tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
+{Guld}{Syre}{Silver}
 %
 \tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
 {Guld}{Syre}{Silver}
