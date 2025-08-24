@@ -1,1 +1,13 @@
+# Ignore everything
+*
 .direnv
+# Don't ignore directories, so we can recurse into them
+!*/
+# Don't ignore .gitignore and *.foo files
+!.gitignore
+!*.tex
+!*.jpg
+!*.png
+!altacv.cls
+!*.bib
+!README.md
