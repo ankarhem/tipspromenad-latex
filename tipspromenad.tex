@@ -45,7 +45,7 @@
 \newcommand{\svarsblanketter}{%
   \clearpage
   \noindent
-  \hspace*{2cm}% left padding
+  \hspace{2cm}% left padding
     \begin{minipage}[t]{0.3\textwidth}
     \svarsblankett
   \end{minipage}\hfill
@@ -56,23 +56,12 @@
     \svarsblankett
   \end{minipage}
   \hspace*{1cm}% right padding
-
-  % \vspace{1cm}
-  %
-  % \noindent
-  % \hspace*{2cm}% left padding
-  % \begin{minipage}[t]{0.3\textwidth}
-  %   \svarsblankett
-  % \end{minipage}\hfill
-  % \begin{minipage}[t]{0.3\textwidth}
-  %   \svarsblankett
-  % \end{minipage}\hfill
-  % \begin{minipage}[t]{0.3\textwidth}
-  %   \svarsblankett
-  % \end{minipage}
-  % \hspace*{1cm}% right padding
 }
 
+
+% Variabel för titel
+\newcommand{\promenadtitel}{\LARGE TIPSPROMENAD}
+\newcommand{\setpromenadtitel}[1]{\renewcommand{\promenadtitel}{#1}}
 % Kommando för en fråga
 % Argument: #1 = bildfil (kan vara tom), #2 = frågetext, #3 = svar 1, #4 = svar X, #5 = svar 2
 \newcommand{\tipspromenadfraga}[5]{%
@@ -85,8 +74,8 @@
   % Frågeruta i en minipage
   \begin{minipage}[t]{0.49\textwidth}
     \begin{center}
-      \textbf{\LARGE TIPSPROMENAD}\\[1em]
-      \textbf{\Large FRÅGA \#\thefraga}
+      {\promenadtitel}\\[1em]
+      FRÅGA \#\thefraga
     \end{center}
     \vspace{1em}
     % Bild (om angiven)
@@ -95,7 +84,7 @@
         \ifstrempty{#1}{%
       % Ingen bild -> tom yta
           }{%
-            \centering\includegraphics[height=8cm,keepaspectratio]{#1}%
+            \centering\includegraphics[width=11cm,height=8cm,keepaspectratio]{#1}
           }%
         }
       \end{center}
@@ -120,32 +109,32 @@
     \setcounter{fragaonpage}{0}%
     \par\newpage
   \else
-    \hfill
-    \vrule width 0.2pt % <-- vertical line
+    \hspace{0.2cm}
+    \vrule width 0.4pt % <-- vertical line
+    % \hfill
   \fi
-}
+  \ignorespaces
+  \ignorespacesafterend
+}%
 
 \begin{document}
+
+\setpromenadtitel{\textbf{\LARGE Julquiz 2025}}
+
 \tipspromenadfraga{stockholm.jpg}{Vilken stad är Sveriges huvudstad?}
 {Stockholm}{Göteborg}{Malmö}
-%
-\tipspromenadfraga{}{Hur många grader är en rät vinkel?}
+\tipspromenadfraga{vinklar.png}{Hur många grader är en rät vinkel?}
 {45}{90}{180}
-%
 \tipspromenadfraga{moon.jpg}{Vilket år landade människan på månen?}
 {1965}{1969}{1972}
-%
-\tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
+\tipspromenadfraga{oxygen.jpg}{Vilket grundämne har kemiska beteckningen O?}
 {Guld}{Syre}{Silver}
-%
-\tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
-{Guld}{Syre}{Silver}
-%
-\tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
-{Guld}{Syre}{Silver}
-%
-\tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
-{Guld}{Syre}{Silver}
+\tipspromenadfraga{iphone-1.jpg}{Vilket år uppfanns den första iPhonen?}
+{2004}{2005}{2006}
+\tipspromenadfraga{blaval.jpg}{Vilket djur är världens största däggdjur?}
+{Elefant}{Blåval}{Kaskelot}
+\tipspromenadfraga{kebnekaise.jpg}{Vad heter Sveriges högsta berg?}
+{Kebnekaise}{Helagsfjället}{Sarektjåkkå}
 
 % Generera svarsblankett
 \svarsblanketter
