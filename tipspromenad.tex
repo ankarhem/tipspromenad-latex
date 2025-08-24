@@ -1,0 +1,70 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{etoolbox} % för logik
+
+% Räknare för frågor
+\newcounter{fraga}
+\newcounter{fragaonpage} % håller koll på hur många frågor som finns på aktuell sida
+
+% Anpassa rubrikstil
+\titleformat{\section}{\centering\bfseries\Large}{}{0pt}{}
+
+% Kommando för en fråga
+% Argument: #1 = frågetext, #2 = svar 1, #3 = svar X, #4 = svar 2
+\newcommand{\tipspromenadfraga}[4]{%
+  \stepcounter{fraga}%
+  \stepcounter{fragaonpage}%
+  \vspace{1em}
+  \begin{center}
+    \textbf{\LARGE TIPSPROMENAD}\\[1em]
+    \textbf{\Large FRÅGA \thefraga}
+  \end{center}
+  \vspace{1em}
+  % Frågeruta
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thick] (0,0) rectangle (12,5);
+      \node[align=center,text width=11cm] at (6,2.5) {#1};
+    \end{tikzpicture}
+  \end{center}
+  \vspace{1em}
+  % Svarsalternativ
+  \renewcommand{\arraystretch}{1.8}
+  \begin{center}
+    \begin{tabular}{|>{\centering\arraybackslash}m{1cm}|m{10cm}|}
+      \hline
+      1 & #2 \\ \hline
+      X & #3 \\ \hline
+      2 & #4 \\ \hline
+    \end{tabular}
+  \end{center}
+  \vfill
+  % Om två frågor har skrivits ut på sidan -> ny sida
+  \ifnum\value{fragaonpage}=2
+    \setcounter{fragaonpage}{0}%
+    \newpage
+  \fi
+}
+
+\begin{document}
+
+\tipspromenadfraga{Vilken stad är Sveriges huvudstad?}
+{Stockholm}{Göteborg}{Malmö}
+
+\tipspromenadfraga{Hur många grader är en rät vinkel?}
+{45}{90}{180}
+
+\tipspromenadfraga{Vilket år landade människan på månen?}
+{1965}{1969}{1972}
+
+\tipspromenadfraga{Vilket grundämne har kemiska beteckningen O?}
+{Guld}{Syre}{Silver}
+
+\tipspromenadfraga{Vilket djur kallas "kungen av djungeln"?}
+{Lejon}{Tiger}{Elefant}
+
+\end{document}
