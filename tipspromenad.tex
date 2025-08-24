@@ -16,6 +16,59 @@
 % Anpassa rubrikstil
 \titleformat{\section}{\centering\bfseries\Large}{}{0pt}{}
 
+% Rekursiv makro som bygger rader
+\newcommand{\makerows}[1]{%
+  #1 & & & \\ \hline
+  \ifnum#1<\value{fraga}%
+    \expandafter\makerows\expandafter{\number\numexpr#1+1\relax}%
+  \fi
+}
+
+% En enskild blankett
+\newcommand{\svarsblankett}{%
+  \renewcommand{\arraystretch}{1.5}%
+  % Namn-rad
+  \noindent\textbf{Namn:} \rule{0.65\linewidth}{0.4pt}\\[1em]
+  \begin{tabular}{|c|*{3}{>{\centering\arraybackslash}p{1.5cm}|}}
+    \hline
+    \textbf{Fråga} & \textbf{1} & \textbf{X} & \textbf{2} \\ \hline
+    \makerows{1}
+  \end{tabular}
+
+  \vspace{2em}
+  \noindent\textbf{Utslagsfråga:} \rule{0.4\linewidth}{0.4pt}\\[1em]
+  \hspace{2em}
+  \vspace{1em}
+}
+
+% Kommando för att skriva ut en svarsblankett
+\newcommand{\svarsblanketter}{%
+  \clearpage
+  \noindent
+    \begin{minipage}[t]{0.32\textwidth}
+    \svarsblankett
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.32\textwidth}
+    \svarsblankett
+  \end{minipage}
+  \begin{minipage}[t]{0.32\textwidth}
+    \svarsblankett
+  \end{minipage}
+
+  \vspace{1cm}
+
+  \noindent
+  \begin{minipage}[t]{0.32\textwidth}
+    \svarsblankett
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.32\textwidth}
+    \svarsblankett
+  \end{minipage}
+  \begin{minipage}[t]{0.32\textwidth}
+    \svarsblankett
+  \end{minipage}
+}
+
 % Kommando för en fråga
 % Argument: #1 = bildfil (kan vara tom), #2 = frågetext, #3 = svar 1, #4 = svar X, #5 = svar 2
 \newcommand{\tipspromenadfraga}[5]{%
@@ -79,59 +132,8 @@
 %
 \tipspromenadfraga{}{Vilket grundämne har kemiska beteckningen O?}
 {Guld}{Syre}{Silver}
-%
+
+% Generera svarsblankett
+\svarsblanketter
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
