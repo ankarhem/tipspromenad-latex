@@ -2,6 +2,7 @@
 
 1. Kopiera tipspromenad.sty till din LaTeX-mapp
 2. Se [tipspromenad.tex](tipspromenad.tex) för exempel
+3. Kolla [tipspromenad.pdf](tipspromenad.pdf) för att se exempelresultatet.
 
 ## Syntax
 
@@ -36,5 +37,3 @@
 ```
 pdflatex tipspromenad.tex
 ```
-
-Kolla [tipspromenad.pdf](tipspromenad.pdf) för att se exempelresultatet.
