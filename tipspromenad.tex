@@ -1,121 +1,9 @@
 \documentclass[a4paper,12pt,landscape]{article}
-
 \usepackage[top=1.5cm,bottom=1.5cm,left=0cm,right=0cm]{geometry}
-\usepackage{array}
-\usepackage{titlesec}
-\usepackage{etoolbox}
-\usepackage{graphicx}
+\usepackage{tipspromenad} % <-- laddar din mall
 
 % Sökväg till bilder
 \graphicspath{{bilder/}}
-
-% Räknare för frågor
-\newcounter{fraga}
-\newcounter{fragaonpage} % håller koll på hur många frågor på aktuell sida
-
-% Anpassa rubrikstil
-\titleformat{\section}{\centering\bfseries\Large}{}{0pt}{}
-
-% Rekursiv makro som bygger rader
-\newcommand{\makerows}[1]{%
-  #1 & & & \\ \hline
-  \ifnum#1<\value{fraga}%
-    \expandafter\makerows\expandafter{\number\numexpr#1+1\relax}%
-  \fi
-}
-
-% En enskild blankett
-\newcommand{\svarsblankett}{%
-  \renewcommand{\arraystretch}{1.5}%
-  % Namn-rad
-  \noindent\textbf{Namn:} \rule{0.65\linewidth}{0.4pt}\\[1em]
-  \begin{tabular}{|c|*{3}{>{\centering\arraybackslash}p{1.5cm}|}}
-    \hline
-    \textbf{Fråga} & \textbf{1} & \textbf{X} & \textbf{2} \\ \hline
-    \makerows{1}
-  \end{tabular}
-
-  \vspace{2em}
-  \noindent\textbf{Utslagsfråga:} \rule{0.4\linewidth}{0.4pt}\\[1em]
-  \hspace{2em}
-  \vspace{1em}
-}
-
-% Kommando för att skriva ut en svarsblankett
-\newcommand{\svarsblanketter}{%
-  \clearpage
-  \noindent
-  \hspace{2cm}% left padding
-    \begin{minipage}[t]{0.3\textwidth}
-    \svarsblankett
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.3\textwidth}
-    \svarsblankett
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.3\textwidth}
-    \svarsblankett
-  \end{minipage}
-  \hspace*{1cm}% right padding
-}
-
-
-% Variabel för titel
-\newcommand{\promenadtitel}{\LARGE TIPSPROMENAD}
-\newcommand{\setpromenadtitel}[1]{\renewcommand{\promenadtitel}{#1}}
-% Kommando för en fråga
-% Argument: #1 = bildfil (kan vara tom), #2 = frågetext, #3 = svar 1, #4 = svar X, #5 = svar 2
-\newcommand{\tipspromenadfraga}[5]{%
-  \stepcounter{fraga}%
-  \stepcounter{fragaonpage}%
-  % Om det är första frågan på sidan -> börja en rad
-  \ifnum\value{fragaonpage}=1
-    \noindent
-  \fi
-  % Frågeruta i en minipage
-  \begin{minipage}[t]{0.49\textwidth}
-    \begin{center}
-      {\promenadtitel}\\[1em]
-      FRÅGA \#\thefraga
-    \end{center}
-    \vspace{1em}
-    % Bild (om angiven)
-    \begin{center}
-      \parbox[c][8cm][c]{0.9\linewidth}{%
-        \ifstrempty{#1}{%
-      % Ingen bild -> tom yta
-          }{%
-            \centering\includegraphics[width=11cm,height=8cm,keepaspectratio]{#1}
-          }%
-        }
-      \end{center}
-    % Frågetext
-    \begin{center}
-      \parbox{13cm}{\centering #2}
-    \end{center}
-    \vspace{1em}
-    % Svarsalternativ
-    \renewcommand{\arraystretch}{1.8}
-    \begin{center}
-      \begin{tabular}{|>{\centering\arraybackslash}m{1cm}|m{8cm}|}
-        \hline
-        1 & #3 \\ \hline
-        X & #4 \\ \hline
-        2 & #5 \\ \hline
-      \end{tabular}
-    \end{center}
-  \end{minipage}%
-  % Om det är andra frågan på sidan -> radslut + sidbrytning
-  \ifnum\value{fragaonpage}=2
-    \setcounter{fragaonpage}{0}%
-    \par\newpage
-  \else
-    \hspace{0.2cm}
-    \vrule width 0.4pt % <-- vertical line
-    % \hfill
-  \fi
-  \ignorespaces
-  \ignorespacesafterend
-}%
 
 \begin{document}
 
@@ -136,7 +24,14 @@
 \tipspromenadfraga{kebnekaise.jpg}{Vad heter Sveriges högsta berg?}
 {Kebnekaise}{Helagsfjället}{Sarektjåkkå}
 
-% Generera svarsblankett
 \svarsblanketter
 
 \end{document}
+
+
+
+
+
+
+
+
