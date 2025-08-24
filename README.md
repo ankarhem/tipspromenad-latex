@@ -4,4 +4,4 @@
 pdflatex tipspromenad.tex
 ```
 
-Kolla [tipspromenad.pdf](tipspromend.pdf) för att se exempelresultatet.
+Kolla [tipspromenad.pdf](tipspromenad.pdf) för att se exempelresultatet.
