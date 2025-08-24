@@ -1,6 +1,9 @@
 # Generera tipspromenad med LaTeX
 
-## Använda malen
+1. Kopiera tipspromenad.sty till din LaTeX-mapp
+2. Se [tipspromenad.tex](tipspromenad.tex) för exempel
+
+## Syntax
 
 ```latex
 \begin{document}
